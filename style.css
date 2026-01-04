@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow: hidden;
+    background-color: #16000a;
+}
+
+body {
+    -webkit-font-soothing: antialiased;
+    color: #ffdada;
+}
+
+
+body::before{
+    content: "";
+    position: absolute;
+    border: 8px solid;
+    inset: 1rem;
+    z-index: 100;
+    pointer-events: none;
+}
+
+
+button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 12vh;
+    width: 12vh;
+    transform: translateY(2vh);
+    right: 0;
+    margin: auto;
+    -webkit-appearance: none;
+    background: transparent;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+svg{
+    width: 3.5vh;
+}
+
+/* Styling for the h1 element to make it visually appealing with music-like pulsing */
+h1 {
+   position: absolute;
+    top: 10vh;
+     opacity: 0; /* Ẩn ban đầu */
+    left: 2.5rem;
+    right: 1rem;
+    text-align: center;
+    font-size: clamp(3rem, 6vmin, 3rem); /* Increased font size */
+    font-family: 'Poppins', sans-serif; /* Modern, playful font */
+    font-size: 3.5rem; /* Large size for emphasis */
+    text-align: center; /* Center the text */
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53, #ffccbc); /* Gradient with warm, feminine colors */
+    -webkit-background-clip: text; /* Clip gradient to text */
+    -webkit-text-fill-color: transparent; /* Make text color transparent to show gradient */
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.7), 0 0 20px rgba(255, 107, 107, 0.5); /* Soft glow effect */
+    animation: pulse 0.5s ease-in-out infinite; /* Pulse animation to mimic music beat */
+    margin: 20px 0; /* Add some spacing */
+}
+
+/* Pulse animation to make text "giật giật" like a music beat */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Slight scale-up for pulse effect */
+    }
+}
+
+/* Ensure the canvas doesn't overlap with the text */
+.webgl {
+   position: fixed;
+    width: 100vw;
+    height: 100vw;
+    top: 0;
+    left: 0;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Place canvas behind the text */
+}
+
+/* Style cho chữ Bắt đầu */
+#start-text {   
+   font-family: 'Poppins', sans-serif; /* Cute font */
+    font-size: 2rem; /* Moderate font size */
+    color: #ff6b6b; /* Pink color */
+    text-align: center; /* Center align */
+    position: fixed; /* Fixed at the bottom */
+    bottom: 30px; /* 30px from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Precise centering */
+    background: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    padding: 10px 20px; /* Padding */
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer; /* Clickable cursor */
+    transition: opacity 0.5s ease; /* Fade transition */
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.7); /* Soft glow */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    body::before {
+        border-width: 2px; /* Thinner border for small screens */
+        inset: 0.25rem; /* Tighter inset */
+    }
+
+    button {
+        height: 8vmin;
+        width: 8vmin;
+        transform: translateY(1vmin);
+    }
+
+    svg {
+        width: 2.5vmin;
+    }
+
+    h1 {
+        top: 2vmin;
+       font-size: clamp(3rem, 6vmin, 3rem); /* Increased font size */
+        margin: 5px 0;
+    }
+
+    #start-text {
+        bottom: 15px;
+        font-size: clamp(1rem, 3.5vmin, 1.5rem);
+        padding: 6px 12px;
+        border-radius: 12px;
+    }
+}
